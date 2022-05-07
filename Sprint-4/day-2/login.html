@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log in page</title>
+</head>
+<style>
+    #box{
+        width:40%;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        margin: auto;
+        padding:20px;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    #form>input{
+        width:100%;
+        height:40px;
+        
+    }
+</style>
+<body>
+    <div id="box">
+        <h1>Log In</h1>
+        <form id="form" action="">
+            <h3>Email</h3>
+            <input id="email" type="text" placeholder="Enter email" required>
+            <br>
+            <br>
+            <h3>Password</h3>
+            <input id="password" type="text" placeholder="Enter Password" required>
+            <br>
+            <br>
+            <input type="submit" value="Log In">
+        </form>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    document.querySelector("#form").addEventListener("submit", loginFun);
+    var arr = JSON.parse(localStorage.getItem("usersData"));
+
+    function loginFun() {
+        event.preventDefault();
+
+        let email = document.querySelector("#email").value;
+        let password = document.querySelector("#password").value;
+        for(var i = 0; i < arr.length; i++) {
+            if(arr[i].userEmail == email && Number(arr[i].userPassword) == Number(password)) {
+                alert("login successful")
+                break;
+            }
+            else {
+                alert("Wrong Email or Password")
+                break;
+            }
+        }
+    }
+</script>
