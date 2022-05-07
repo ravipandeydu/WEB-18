@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+
+<style>
+    #box{
+        width:30%;
+        border:1px solid;
+        text-align: center;
+        margin: auto;
+        padding: 20px;
+    }
+
+    #dec{
+        background-color: red;
+        border: 0px;
+        padding:10px;
+        border-radius: 20px;
+        color:white;
+    }
+
+    #inc{
+        background-color: green;
+        border: 0px;
+        padding:10px;
+        border-radius: 20px;
+        color:white;
+    }
+</style>
+<body>
+    <div id="box">
+        <h2>Counter</h2>
+        <h1></h1>
+        <button id="dec">Decrement(-)</button>
+        <button id="inc">Increment(+)</button>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    var counter = localStorage.getItem("counterVal") || 0;
+    
+    document.querySelector("h1").innerText = counter;
+
+    document.querySelector("#dec").addEventListener("click", decrementFun);
+
+    function decrementFun() {
+        counter--;
+        document.querySelector("h1").innerText = counter;
+        document.querySelector("h1").style.color = "blue";
+        localStorage.setItem("counterVal", counter);
+    }
+
+    document.querySelector("#inc").addEventListener("click", incrementFun);
+
+    function incrementFun() {
+        counter++;
+        document.querySelector("h1").innerText = counter;
+        localStorage.setItem("counterVal", counter);
+    }
+
+</script>
