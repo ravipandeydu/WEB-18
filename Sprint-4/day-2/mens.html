@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mens</title>
 </head>
+
+<style>
+  #container{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #container>div{
+    padding:10px;
+  }
+</style>
 <body>
     <div id="container"></div>
 </body>
@@ -281,6 +292,13 @@
 
       let mrp = document.createElement("h2");
       mrp.innerText = el.strikedoffprice;
-      mrp.style.textDecoration.strike
+      mrp.style.textDecoration = "line-through";
+
+      let cart = document.createElement("button");
+      cart.innerText = "Add To Cart";
+
+      box.append(product_image, product_name, product_price, mrp, cart);
+      console.log(product_image, product_name, product_price, mrp);
+      document.querySelector("#container").append(box);
   })
 </script>
